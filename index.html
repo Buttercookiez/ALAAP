@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vespa Sprint 150 | Modern Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com "></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com ">
+    <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest "></script>
     <style>
         * {
             margin: 0;
@@ -16,40 +16,14 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        body {
             font-family: 'Inter', sans-serif;
-            height: 100%;
-            width: 100%;
-            background: white;
-            overflow: hidden;
+            background: #f5f5f5;
+            overflow-x: hidden;
         }
 
         .serif {
             font-family: 'Playfair Display', serif;
-        }
-
-        /* Full screen container with border */
-        .screen-container {
-            width: 100vw;
-            height: 100vh;
-            padding: 40px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Main bordered card */
-        .main-card {
-            width: 100%;
-            height: 100%;
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
         }
 
         /* Smooth scroll */
@@ -59,16 +33,16 @@
 
         /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: transparent;
+            background: #f1f1f1;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(196, 30, 58, 0.5);
-            border-radius: 3px;
+            background: #c41e3a;
+            border-radius: 4px;
         }
 
         /* Animations */
@@ -110,7 +84,16 @@
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(196, 30, 58, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(196, 30, 58, 0.6);
             }
         }
 
@@ -135,7 +118,6 @@
         .delay-300 { animation-delay: 0.3s; }
         .delay-400 { animation-delay: 0.4s; }
         .delay-500 { animation-delay: 0.5s; }
-        .delay-600 { animation-delay: 0.6s; }
 
         /* Hover effects */
         .hover-lift {
@@ -143,38 +125,41 @@
         }
 
         .hover-lift:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         /* Navigation pill */
         .nav-pill {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* Specs row hover */
         .spec-row {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .spec-row:last-child {
-            border-bottom: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
         }
 
         .spec-row:hover {
-            background: rgba(196, 30, 58, 0.05);
-            padding-left: 12px;
-            border-left: 3px solid #c41e3a;
+            background: rgba(196, 30, 58, 0.03);
+            border-bottom-color: rgba(196, 30, 58, 0.2);
+            padding-left: 10px;
         }
 
         /* Button styles */
         .btn-primary {
             background: #c41e3a;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -186,8 +171,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
 
         .btn-primary:hover::before {
@@ -195,275 +180,190 @@
         }
 
         .btn-primary:hover {
+            background: #a01830;
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(196, 30, 58, 0.4);
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
         }
 
         .btn-outline {
-            border: 2px solid rgba(255,255,255,0.5);
-            color: white;
+            border: 2px solid #c41e3a;
+            color: #c41e3a;
             transition: all 0.3s ease;
-            background: transparent;
         }
 
         .btn-outline:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: white;
+            background: #c41e3a;
+            color: white;
             transform: translateY(-2px);
         }
 
-        /* Scooter container */
+        /* Image container */
         .scooter-container {
             position: relative;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));
+        }
+
+        .scooter-container::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 40px;
+            background: radial-gradient(ellipse, rgba(0,0,0,0.15) 0%, transparent 70%);
+            filter: blur(10px);
         }
 
         /* Tab active state */
         .tab-active {
             color: #c41e3a;
-            position: relative;
-        }
-
-        .tab-active::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #c41e3a;
-            border-radius: 2px;
+            border-bottom: 2px solid #c41e3a;
         }
 
         /* Glassmorphism card */
         .glass-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Color picker */
-        .color-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .color-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .color-btn.active {
-            transform: scale(1.1);
-            box-shadow: 0 0 0 3px white, 0 0 0 5px currentColor;
-        }
-
-        /* Responsive border */
-        @media (max-width: 1024px) {
-            .screen-container {
-                padding: 30px;
-            }
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .screen-container {
-                padding: 20px;
-            }
             .hero-title {
                 font-size: 3rem;
-            }
-            .hero-number {
-                font-size: 4rem;
-            }
-            .nav-pill {
-                display: none;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-nav {
-                display: none !important;
-            }
-        }
-
-        @media (max-height: 700px) {
-            .screen-container {
-                padding: 20px;
-            }
-        }
-
-        /* Large screens */
-        @media (min-width: 1920px) {
-            .hero-title {
-                font-size: 9rem;
-            }
-            .hero-number {
-                font-size: 11rem;
-            }
-        }
-
-        /* Small height screens */
-        @media (max-height: 800px) {
-            .screen-container {
-                padding: 20px;
             }
         }
     </style>
 <base target="_blank">
 </head>
-<body>
+<body class="bg-gray-50">
 
-    <!-- Screen Container with Border -->
-    <div class="screen-container">
-
-        <!-- Main Card with Border -->
-        <div class="main-card">
+    <!-- Main Container -->
+    <div class="min-h-screen flex items-center justify-center p-4 md:p-8">
+        <div class="max-w-7xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
 
             <!-- Navigation -->
-            <nav class="flex justify-between items-center px-6 py-4 md:px-10 lg:px-12 flex-shrink-0">
+            <nav class="flex justify-between items-center px-8 py-6 md:px-12">
                 <!-- Logo -->
-                <div class="flex items-center gap-2 opacity-0 animate-fadeInLeft" id="logo-container">
-                    <svg width="90" height="40" viewBox="0 0 120 45" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-colors duration-500" id="vespa-logo">
-                        <path d="M15 10C10 10 8 15 8 22.5C8 30 12 35 18 35C24 35 28 30 28 22.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="logo-stroke"/>
-                        <path d="M22 14C28 14 32 18 32 25.5C32 33 27 38 22 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="logo-stroke"/>
-                        <text x="38" y="30" font-family="Playfair Display, serif" font-size="22" fill="currentColor" font-style="italic" font-weight="600">Vespa</text>
+                <div class="flex items-center gap-2 opacity-0 animate-fadeInLeft">
+                    <svg width="80" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg ">
+                        <path d="M20 8C15 8 10 12 10 20C10 28 15 32 20 32C25 32 30 28 30 20" stroke="#c41e3a" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M25 12C30 12 35 16 35 24C35 32 30 36 25 36" stroke="#c41e3a" stroke-width="3" stroke-linecap="round"/>
+                        <text x="45" y="26" font-family="serif" font-size="18" fill="#c41e3a" font-style="italic">Vespa</text>
                     </svg>
                 </div>
 
-                <!-- Desktop Model Tabs -->
-                <div class="hidden lg:flex items-center gap-6 nav-pill px-8 py-3 rounded-full opacity-0 animate-fadeInUp delay-100">
-                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors py-1">PRIMAVERA</button>
-                    <button class="text-sm font-medium tab-active py-1 transition-colors" id="nav-sprint">SPRINT</button>
-                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors py-1">GTS</button>
-                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors py-1">GTS SUPER</button>
-                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors py-1">SEI GIORNI</button>
-                    <button class="p-1 hover:bg-gray-100 rounded-lg transition-colors">
-                        <i data-lucide="grid-3x3" class="w-4 h-4 text-gray-400"></i>
-                    </button>
+                <!-- Model Tabs -->
+                <div class="hidden md:flex items-center gap-8 nav-pill px-6 py-3 rounded-full opacity-0 animate-fadeInUp delay-100">
+                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">PRIMAVERA</button>
+                    <button class="text-sm font-medium tab-active pb-1">SPRINT</button>
+                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">GTS</button>
+                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">GTS SUPER</button>
+                    <button class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">SEI GIORNI</button>
+                    <i data-lucide="grid-3x3" class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600"></i>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
-                    <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+                <!-- Mobile Menu -->
+                <button class="md:hidden p-2">
+                    <i data-lucide="menu" class="w-6 h-6 text-gray-600"></i>
                 </button>
             </nav>
 
-            <!-- Mobile Menu Overlay -->
-            <div id="mobile-menu" class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 lg:hidden" style="border-radius: 4px; margin: 20px;">
-                <div class="p-6 h-full flex flex-col">
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-xl font-bold" style="color: var(--primary-color, #c41e3a)">Models</span>
-                        <button onclick="toggleMobileMenu()" class="p-2 hover:bg-gray-100 rounded-lg">
-                            <i data-lucide="x" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-                    <div class="space-y-2 flex-1">
-                        <button class="block w-full text-left py-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50 rounded-lg px-2 transition-colors">PRIMAVERA</button>
-                        <button class="block w-full text-left py-4 text-lg font-bold border-b border-gray-100 hover:bg-gray-50 rounded-lg px-2 transition-colors" style="color: var(--primary-color, #c41e3a)">SPRINT</button>
-                        <button class="block w-full text-left py-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50 rounded-lg px-2 transition-colors">GTS</button>
-                        <button class="block w-full text-left py-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50 rounded-lg px-2 transition-colors">GTS SUPER</button>
-                        <button class="block w-full text-left py-4 text-lg font-medium border-b border-gray-100 hover:bg-gray-50 rounded-lg px-2 transition-colors">SEI GIORNI</button>
-                    </div>
-                </div>
-            </div>
+            <!-- Main Content Grid -->
+            <div class="grid md:grid-cols-2 gap-0">
 
-            <!-- Main Content -->
-            <div class="flex-1 grid lg:grid-cols-2 gap-0 overflow-hidden min-h-0">
-
-                <!-- Left Side - Hero Section -->
-                <div class="relative flex flex-col justify-between p-6 md:p-8 lg:p-10 overflow-hidden transition-all duration-700" id="left-panel" style="background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);">
+                <!-- Left Side - Red Background -->
+                <div class="relative bg-gradient-to-br from-[#c41e3a] to-[#8b0000] min-h-[600px] flex flex-col justify-between p-8 md:p-12 overflow-hidden">
 
                     <!-- Decorative Elements -->
-                    <div class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
-                    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-black opacity-10 rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-black opacity-10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
 
                     <!-- Hero Title -->
-                    <div class="relative z-10 mt-2">
-                        <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tighter opacity-0 animate-fadeInUp delay-200" style="font-family: 'Inter', sans-serif; text-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+                    <div class="relative z-10 mt-8">
+                        <h1 class="hero-title text-6xl md:text-8xl font-black text-white tracking-tighter opacity-0 animate-fadeInUp delay-200" style="font-family: 'Inter', sans-serif;">
                             SPRINT
                         </h1>
-                        <div class="flex items-baseline gap-2 mt-0">
-                            <span class="hero-number text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white/20 opacity-0 animate-fadeInLeft delay-300">150</span>
+                        <div class="flex items-baseline gap-4 mt-2">
+                            <span class="text-7xl md:text-9xl font-black text-white/20 opacity-0 animate-fadeInLeft delay-300">150</span>
                         </div>
                     </div>
 
                     <!-- Scooter Image -->
-                    <div class="scooter-container relative z-10 flex-1 flex items-center justify-center my-4 lg:my-6 opacity-0 animate-fadeInUp delay-400 min-h-0">
-                        <img src="https://kimi-web-img.moonshot.cn/img/images.piaggio.com/ed9ddb36833d8770f959e1a49934f4b1212ad4d4.png" 
+                    <div class="scooter-container relative z-10 flex-1 flex items-center justify-center my-8 opacity-0 animate-fadeInUp delay-400">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.piaggio.com/ed9ddb36833d8770f959e1a49934f4b1212ad4d4.png " 
                              alt="Vespa Sprint 150" 
-                             class="scooter-img w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg animate-float object-contain max-h-full"
-                             style="filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));">
+                             class="w-full max-w-lg animate-float drop-shadow-2xl filter brightness-110 contrast-110"
+                             style="filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));">
                     </div>
 
                     <!-- Bottom Actions -->
-                    <div class="relative z-10 flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fadeInUp delay-500">
-                        <button class="bg-white text-gray-900 px-6 py-3 rounded-xl font-semibold text-sm hover-lift flex items-center justify-center gap-2 shadow-lg">
-                            <i data-lucide="images" class="w-4 h-4"></i>
+                    <div class="relative z-10 flex gap-4 opacity-0 animate-fadeInUp delay-500">
+                        <button class="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold text-sm hover-lift flex items-center gap-2">
                             <span>GALLERY</span>
                         </button>
-                        <button class="btn-outline px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
-                            <span>DOWNLOAD</span>
+                        <button class="text-white border-2 border-white/30 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition-all flex items-center gap-2">
+                            <span>DOWNLOAD BROCHURE</span>
                             <i data-lucide="download" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Right Side - Specifications -->
-                <div class="bg-white p-6 md:p-8 lg:p-10 flex flex-col justify-between overflow-y-auto">
+                <!-- Right Side - White Background -->
+                <div class="bg-white p-8 md:p-12 flex flex-col justify-between min-h-[600px]">
 
                     <!-- Specifications Section -->
                     <div class="opacity-0 animate-fadeInRight delay-300">
-                        <div class="flex items-center gap-4 mb-6">
-                            <h2 class="text-xs font-bold tracking-[0.2em] text-gray-900 uppercase">Specifications</h2>
+                        <div class="flex items-center gap-4 mb-8">
+                            <h2 class="text-xs font-bold tracking-widest text-gray-900 uppercase">Specifications</h2>
                             <div class="flex-1 h-px bg-gray-200"></div>
                         </div>
 
-                        <div class="space-y-0">
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Max Power</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">12.9 HP @ 7,750 rpm</span>
+                        <div class="space-y-4">
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Max Power</span>
+                                <span class="text-sm font-semibold text-gray-900">12.9 HP @ 7,750 rpm</span>
                             </div>
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Environmental</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">61 g/km</span>
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Environmental Performance</span>
+                                <span class="text-sm font-semibold text-gray-900">61 g/km</span>
                             </div>
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Fuel Tank</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">8 lt</span>
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Fuel Tank Capacity</span>
+                                <span class="text-sm font-semibold text-gray-900">8 lt</span>
                             </div>
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Width</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">735 mm</span>
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Width</span>
+                                <span class="text-sm font-semibold text-gray-900">735 mm</span>
                             </div>
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Length</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">1870 mm</span>
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Length</span>
+                                <span class="text-sm font-semibold text-gray-900">1870 mm</span>
                             </div>
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Wheelbase</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">1340 mm</span>
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Wheelbase</span>
+                                <span class="text-sm font-semibold text-gray-900">1340 mm</span>
                             </div>
-                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer group">
-                                <span class="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">Seat height</span>
-                                <span class="text-sm font-semibold text-gray-900 group-hover:text-[#c41e3a] transition-colors spec-value">790 mm</span>
+                            <div class="spec-row flex justify-between items-center py-3 cursor-pointer">
+                                <span class="text-sm text-gray-500 font-medium">Seat height</span>
+                                <span class="text-sm font-semibold text-gray-900">790 mm</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- CTA Section -->
-                    <div class="mt-6 lg:mt-8 opacity-0 animate-fadeInRight delay-400">
-                        <button class="btn-primary w-full sm:w-auto px-10 py-4 text-white font-bold text-sm tracking-widest rounded-xl mb-4 shadow-xl" id="test-ride-btn">
+                    <div class="mt-12 opacity-0 animate-fadeInRight delay-400">
+                        <button class="btn-primary w-full md:w-auto px-12 py-4 text-white font-bold text-sm tracking-widest rounded-lg mb-6">
                             TEST RIDE
                         </button>
 
                         <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-400 font-medium tracking-wider hover:text-gray-600 cursor-pointer transition-colors">2017 CATALOGUE</span>
-                            <div class="flex gap-2">
-                                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-[#c41e3a] hover:text-[#c41e3a] transition-all hover:scale-110 nav-arrow">
+                            <span class="text-xs text-gray-400 font-medium tracking-wider">2017 CATALOGUE</span>
+                            <div class="flex gap-3">
+                                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-[#c41e3a] hover:text-[#c41e3a] transition-all">
                                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                                 </button>
-                                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-[#c41e3a] hover:text-[#c41e3a] transition-all hover:scale-110 nav-arrow">
+                                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-[#c41e3a] hover:text-[#c41e3a] transition-all">
                                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                                 </button>
                             </div>
@@ -473,42 +373,42 @@
             </div>
 
             <!-- Features Bar -->
-            <div class="bg-gray-50 border-t border-gray-100 px-6 md:px-10 lg:px-12 py-4 flex-shrink-0">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-200 feature-item">
-                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center flex-shrink-0 feature-icon-bg">
-                            <i data-lucide="zap" class="w-5 h-5 text-[#c41e3a] feature-icon"></i>
+            <div class="bg-gray-50 border-t border-gray-100 px-8 md:px-12 py-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-200">
+                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 text-[#c41e3a]"></i>
                         </div>
-                        <div class="min-w-0">
+                        <div>
                             <p class="text-xs text-gray-500">Engine</p>
-                            <p class="text-sm font-semibold text-gray-900 truncate">i-get 150cc</p>
+                            <p class="text-sm font-semibold text-gray-900">i-get 150cc</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-300 feature-item">
-                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center flex-shrink-0 feature-icon-bg">
-                            <i data-lucide="fuel" class="w-5 h-5 text-[#c41e3a] feature-icon"></i>
+                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-300">
+                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center">
+                            <i data-lucide="fuel" class="w-5 h-5 text-[#c41e3a]"></i>
                         </div>
-                        <div class="min-w-0">
+                        <div>
                             <p class="text-xs text-gray-500">Consumption</p>
-                            <p class="text-sm font-semibold text-gray-900 truncate">46 km/l</p>
+                            <p class="text-sm font-semibold text-gray-900">46 km/l</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-400 feature-item">
-                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center flex-shrink-0 feature-icon-bg">
-                            <i data-lucide="gauge" class="w-5 h-5 text-[#c41e3a] feature-icon"></i>
+                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-400">
+                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center">
+                            <i data-lucide="gauge" class="w-5 h-5 text-[#c41e3a]"></i>
                         </div>
-                        <div class="min-w-0">
+                        <div>
                             <p class="text-xs text-gray-500">Top Speed</p>
-                            <p class="text-sm font-semibold text-gray-900 truncate">95 km/h</p>
+                            <p class="text-sm font-semibold text-gray-900">95 km/h</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-500 feature-item">
-                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center flex-shrink-0 feature-icon-bg">
-                            <i data-lucide="weight" class="w-5 h-5 text-[#c41e3a] feature-icon"></i>
+                    <div class="flex items-center gap-3 opacity-0 animate-fadeInUp delay-500">
+                        <div class="w-10 h-10 rounded-full bg-[#c41e3a]/10 flex items-center justify-center">
+                            <i data-lucide="weight" class="w-5 h-5 text-[#c41e3a]"></i>
                         </div>
-                        <div class="min-w-0">
+                        <div>
                             <p class="text-xs text-gray-500">Dry Weight</p>
-                            <p class="text-sm font-semibold text-gray-900 truncate">120 kg</p>
+                            <p class="text-sm font-semibold text-gray-900">120 kg</p>
                         </div>
                     </div>
                 </div>
@@ -516,14 +416,14 @@
         </div>
     </div>
 
-    <!-- Floating Color Picker -->
-    <div class="fixed bottom-8 right-8 glass-card rounded-2xl p-4 shadow-2xl z-50 opacity-0 animate-fadeInUp delay-600">
-        <p class="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">Select Color</p>
-        <div class="flex gap-3">
-            <button onclick="changeColor('red')" class="color-btn w-10 h-10 rounded-full bg-[#c41e3a] active shadow-lg" data-color="red" aria-label="Red"></button>
-            <button onclick="changeColor('blue')" class="color-btn w-10 h-10 rounded-full bg-blue-600 shadow-lg" data-color="blue" aria-label="Blue"></button>
-            <button onclick="changeColor('black')" class="color-btn w-10 h-10 rounded-full bg-gray-900 shadow-lg" data-color="black" aria-label="Black"></button>
-            <button onclick="changeColor('white')" class="color-btn w-10 h-10 rounded-full bg-white border-2 border-gray-300 shadow-lg" data-color="white" aria-label="White"></button>
+    <!-- Interactive Color Picker (Floating) -->
+    <div class="fixed bottom-8 right-8 glass-card rounded-2xl p-4 shadow-2xl opacity-0 animate-fadeInUp delay-500 z-50">
+        <p class="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Select Color</p>
+        <div class="flex gap-2">
+            <button onclick="changeColor('red')" class="w-8 h-8 rounded-full bg-[#c41e3a] ring-2 ring-offset-2 ring-[#c41e3a] hover:scale-110 transition-transform"></button>
+            <button onclick="changeColor('blue')" class="w-8 h-8 rounded-full bg-blue-600 hover:scale-110 transition-transform"></button>
+            <button onclick="changeColor('black')" class="w-8 h-8 rounded-full bg-gray-900 hover:scale-110 transition-transform"></button>
+            <button onclick="changeColor('white')" class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 hover:scale-110 transition-transform"></button>
         </div>
     </div>
 
@@ -531,216 +431,97 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Color configurations
-        const colorConfig = {
-            red: {
-                primary: '#c41e3a',
-                gradientFrom: '#c41e3a',
-                gradientTo: '#8b0000',
-                light: 'rgba(196, 30, 58, 0.1)',
-                lighter: 'rgba(196, 30, 58, 0.05)'
-            },
-            blue: {
-                primary: '#2563eb',
-                gradientFrom: '#2563eb',
-                gradientTo: '#1e40af',
-                light: 'rgba(37, 99, 235, 0.1)',
-                lighter: 'rgba(37, 99, 235, 0.05)'
-            },
-            black: {
-                primary: '#111827',
-                gradientFrom: '#374151',
-                gradientTo: '#111827',
-                light: 'rgba(17, 24, 39, 0.1)',
-                lighter: 'rgba(17, 24, 39, 0.05)'
-            },
-            white: {
-                primary: '#6b7280',
-                gradientFrom: '#f3f4f6',
-                gradientTo: '#9ca3af',
-                light: 'rgba(107, 114, 128, 0.1)',
-                lighter: 'rgba(107, 114, 128, 0.05)'
-            }
-        };
-
-        let currentColor = 'red';
-
-        // Change color function
+        // Color change functionality
         function changeColor(color) {
-            if (color === currentColor) return;
+            const leftPanel = document.querySelector('.bg-gradient-to-br');
+            const buttons = document.querySelectorAll('.btn-primary');
+            const icons = document.querySelectorAll('.text-[#c41e3a]');
+            const bgIcons = document.querySelectorAll('.bg-[#c41e3a]/10');
 
-            currentColor = color;
-            const config = colorConfig[color];
+            let primaryColor, gradientFrom, gradientTo;
 
-            // Update CSS variable
-            document.documentElement.style.setProperty('--primary-color', config.primary);
+            switch(color) {
+                case 'blue':
+                    primaryColor = '#2563eb';
+                    gradientFrom = '#2563eb';
+                    gradientTo = '#1e40af';
+                    break;
+                case 'black':
+                    primaryColor = '#111827';
+                    gradientFrom = '#374151';
+                    gradientTo = '#111827';
+                    break;
+                case 'white':
+                    primaryColor = '#6b7280';
+                    gradientFrom = '#f3f4f6';
+                    gradientTo = '#d1d5db';
+                    break;
+                default:
+                    primaryColor = '#c41e3a';
+                    gradientFrom = '#c41e3a';
+                    gradientTo = '#8b0000';
+            }
 
-            // Update left panel gradient
-            const leftPanel = document.getElementById('left-panel');
-            leftPanel.style.background = `linear-gradient(135deg, ${config.gradientFrom} 0%, ${config.gradientTo} 100%)`;
+            // Update gradients
+            leftPanel.style.background = `linear-gradient(to bottom right, ${gradientFrom}, ${gradientTo})`;
 
             // Update buttons
-            const primaryBtns = document.querySelectorAll('.btn-primary');
-            primaryBtns.forEach(btn => {
-                btn.style.background = config.primary;
-                btn.style.boxShadow = `0 15px 35px ${config.primary}40`;
+            buttons.forEach(btn => {
+                btn.style.background = primaryColor;
             });
 
-            // Update logo color
-            const logo = document.getElementById('vespa-logo');
-            logo.style.color = config.primary;
-
-            // Update navigation active tab
-            const navSprint = document.getElementById('nav-sprint');
-            navSprint.style.color = config.primary;
-
-            // Update tab underline
-            const style = document.createElement('style');
-            style.textContent = `
-                .tab-active::after {
-                    background: ${config.primary} !important;
-                }
-            `;
-            document.head.appendChild(style);
-
-            // Update spec values hover color
-            const specValues = document.querySelectorAll('.spec-value');
-            specValues.forEach(val => {
-                val.style.setProperty('color', config.primary, 'important');
+            // Update icons
+            icons.forEach(icon => {
+                icon.style.color = primaryColor;
             });
 
-            // Update spec row hover
-            const specRows = document.querySelectorAll('.spec-row');
-            specRows.forEach(row => {
-                row.addEventListener('mouseenter', function() {
-                    this.style.borderLeftColor = config.primary;
-                    this.style.background = config.lighter;
-                });
-                row.addEventListener('mouseleave', function() {
-                    this.style.borderLeftColor = 'transparent';
-                    this.style.background = 'transparent';
-                });
+            // Update icon backgrounds
+            bgIcons.forEach(bg => {
+                bg.style.background = `${primaryColor}20`;
             });
-
-            // Update feature icons
-            const featureIcons = document.querySelectorAll('.feature-icon');
-            featureIcons.forEach(icon => {
-                icon.style.color = config.primary;
-            });
-
-            // Update feature icon backgrounds
-            const featureIconBgs = document.querySelectorAll('.feature-icon-bg');
-            featureIconBgs.forEach(bg => {
-                bg.style.background = config.light;
-            });
-
-            // Update navigation arrows hover
-            const navArrows = document.querySelectorAll('.nav-arrow');
-            navArrows.forEach(arrow => {
-                arrow.addEventListener('mouseenter', function() {
-                    this.style.borderColor = config.primary;
-                    this.style.color = config.primary;
-                });
-            });
-
-            // Update color picker active state
-            document.querySelectorAll('.color-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.color === color) {
-                    btn.classList.add('active');
-                    btn.style.boxShadow = `0 0 0 3px white, 0 0 0 5px ${config.primary}`;
-                } else {
-                    btn.style.boxShadow = '';
-                }
-            });
-
-            // Update menu icon
-            document.getElementById('menu-icon').style.color = config.primary;
-
-            // Re-initialize icons
-            setTimeout(() => lucide.createIcons(), 100);
         }
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const isOpen = !menu.classList.contains('translate-x-full');
-
-            if (isOpen) {
-                menu.classList.add('translate-x-full');
-            } else {
-                menu.classList.remove('translate-x-full');
-            }
-        }
-
-        // Tab switching
-        const tabs = document.querySelectorAll('.nav-pill button:not(:last-child)');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                tabs.forEach(t => {
-                    t.classList.remove('tab-active');
-                    t.classList.add('text-gray-400');
-                    t.style.color = '';
-                });
-                this.classList.add('tab-active');
-                this.classList.remove('text-gray-400');
-            });
-        });
-
-        // Spec row interactions
-        document.querySelectorAll('.spec-row').forEach(row => {
-            row.addEventListener('mouseenter', function() {
-                const value = this.querySelector('.spec-value');
-                const config = colorConfig[currentColor];
-                value.style.color = config.primary;
-            });
-            row.addEventListener('mouseleave', function() {
-                const value = this.querySelector('.spec-value');
-                value.style.color = '';
-            });
-        });
-
-        // Intersection Observer
+        // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -10% 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
+        // Observe all animated elements
         document.querySelectorAll('.opacity-0').forEach(el => {
             observer.observe(el);
         });
 
-        // Handle resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                lucide.createIcons();
-            }, 250);
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.nav-pill button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('text-gray-400');
+                });
+                this.classList.add('tab-active');
+                this.classList.remove('text-gray-400');
+            });
         });
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            changeColor('red');
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (!mobileMenu.classList.contains('translate-x-full')) {
-                    toggleMobileMenu();
-                }
-            }
+        // Spec row hover effect enhancement
+        document.querySelectorAll('.spec-row').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.querySelector('span:last-child').classList.add('text-[#c41e3a]');
+            });
+            row.addEventListener('mouseleave', function() {
+                this.querySelector('span:last-child').classList.remove('text-[#c41e3a]');
+            });
         });
     </script>
 </body>
